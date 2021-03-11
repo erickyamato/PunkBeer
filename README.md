@@ -7,3 +7,9 @@ This is a project that lists beers and their informations from [Punk API](https:
 Programming language: `Swift 5.0`
 
 Programming IDE: `Xcode 12.4`
+
+Dependency manager: `CocoaPods`
+
+## Dependencies
+* Alamofire
+* AlamofireImage
