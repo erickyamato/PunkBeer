@@ -30,4 +30,12 @@ class BeerCell: UITableViewCell, NibReusable {
     private func applyStyle() {
         beerImageView.layer.cornerRadius = beerImageView.frame.height/2
     }
+    
+    func setup(beerImage: UIImageView,
+               beerName: String,
+               alcoholicStrength: String) {
+        beerNameLabel.text = beerName
+        alcoholicStrengthLabel.text = alcoholicStrength
+        
+    }
 }

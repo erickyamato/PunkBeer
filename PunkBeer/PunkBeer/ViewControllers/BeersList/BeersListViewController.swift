@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class BeersListViewController: UIViewController {
 
     private enum Constants {
-        
+        static let pageIncrement = 1
+        static let initialPage   = 1
     }
+    
+    private var page = 1
+    var beersList = [Beer]()
     
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -22,6 +27,10 @@ class BeersListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     //MARK: Functions
@@ -38,14 +47,30 @@ class BeersListViewController: UIViewController {
 //MARK: UITableViewDataSource
 extension BeersListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return currenciesListItems.count
-        return 1
+        return beersList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: BeerCell = tableView.dequeueReusableCell(for: indexPath)
-//        let item = currenciesListItems[indexPath.row]
-//        cell.setup(code: item.code, name: item.name)
+        let item = beersList[indexPath.row]
+        let beerImageUrl = item.imageURL
+        cell.beerImageView.af.setImage(
+            withURL:  URL(string: beerImageUrl)!,
+            filter: nil,
+            imageTransition: UIImageView.ImageTransition.crossDissolve(0.5),
+            runImageTransitionIfCached: false) {
+                // Completion closure
+                response in
+                    // Check if the image isn't already cached
+                    if response.response != nil {
+                        // Force the cell update
+                        self.tableView.beginUpdates()
+                        self.tableView.endUpdates()
+                    }
+            }
+//        cell.setup(beerImage: item.imageURL ,
+//                   beerName: item.name,
+//                   alcoholicStrength: String(item.alcoholicStrength))
         return cell
     }
 }
@@ -55,10 +80,12 @@ extension BeersListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let _: BeerCell = tableView.dequeueReusableCell(for: indexPath)
-//        let item = currenciesListItems[indexPath.row]
+        let item = beersList[indexPath.row]
        
         
         
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    }
 }
