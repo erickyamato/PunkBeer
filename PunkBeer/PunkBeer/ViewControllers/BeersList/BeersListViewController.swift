@@ -18,6 +18,7 @@ class BeersListViewController: UIViewController {
     
     private var page = 1
     var beersList = [Beer]()
+
     
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
