@@ -13,4 +13,3 @@ Dependency manager: `CocoaPods`
 ## Dependencies
 * Alamofire
 * AlamofireImage
-* Lottie
