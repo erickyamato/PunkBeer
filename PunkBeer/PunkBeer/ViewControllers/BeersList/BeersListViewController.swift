@@ -18,7 +18,7 @@ class BeersListViewController: UIViewController {
     
     private var page = 1
     var beersList = [Beer]()
-
+    var activityIndicator = UIActivityIndicatorView(style: .large)
     
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -27,14 +27,26 @@ class BeersListViewController: UIViewController {
     //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupActivityIndicator()
         setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
     }
     
     //MARK: Functions
+    private func setupActivityIndicator() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
     private func setupTableView() {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(cellType: BeerCell.self)
@@ -47,6 +59,8 @@ class BeersListViewController: UIViewController {
         if beersList.count == Int() || page == Constants.kInitialPage {
             beersList = [Beer]()
         }
+        
+        activityIndicator.startAnimating()
         
         
         
