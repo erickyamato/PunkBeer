@@ -48,11 +48,30 @@ class BeersDetailsViewController: UIViewController {
     }
     
     private func applyLanguage() {
-        
+        beerNameLabel.text              = "\(Constants.kName)"
+        beerAlcoholicStrengthLabel.text = "\(Constants.kAlcoholicStrength)"
+        beerBitternessLabel.text        = "\(Constants.kBitterness)"
+        beerDescriptionLabel.text       = Constants.kDescription
     }
 
     private func applyStyle() {
+        beerNameLabel.font                   = .systemFont(ofSize: 17)
+        beerNameLabel.textColor              = .black
         
+        beerTaglineLabel.font                = .systemFont(ofSize: 13)
+        beerTaglineLabel.textColor           = .lightGray
+        
+        beerAlcoholicStrengthLabel.font      = .systemFont(ofSize: 17)
+        beerAlcoholicStrengthLabel.textColor = .black
+        
+        beerBitternessLabel.font             = .systemFont(ofSize: 17)
+        beerBitternessLabel.textColor        = .black
+        
+        beerDescriptionLabel.font            = .boldSystemFont(ofSize: 17)
+        beerDescriptionLabel.textColor       = .black
+        
+        beerDescriptionTextView.font         = .systemFont(ofSize: 14)
+        beerDescriptionTextView.textColor    = .black
     }
 
 }
