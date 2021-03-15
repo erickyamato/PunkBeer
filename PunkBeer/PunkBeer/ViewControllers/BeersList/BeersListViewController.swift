@@ -12,8 +12,8 @@ import AlamofireImage
 class BeersListViewController: UIViewController {
 
     private enum Constants {
-        static let pageIncrement = 1
-        static let initialPage   = 1
+        static let kPageIncrement = 1
+        static let kInitialPage   = 1
     }
     
     private var page = 1
@@ -59,11 +59,8 @@ extension BeersListViewController: UITableViewDataSource {
             filter: nil,
             imageTransition: UIImageView.ImageTransition.crossDissolve(0.5),
             runImageTransitionIfCached: false) {
-                // Completion closure
                 response in
-                    // Check if the image isn't already cached
                     if response.response != nil {
-                        // Force the cell update
                         self.tableView.beginUpdates()
                         self.tableView.endUpdates()
                     }
