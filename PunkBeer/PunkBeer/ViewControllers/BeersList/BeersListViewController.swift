@@ -41,6 +41,15 @@ class BeersListViewController: UIViewController {
         tableView.delegate = self
         tableView.tableFooterView = UIView()
     }
+    
+    func loadBeerList(completion: @escaping CompletionBlock.Empty) {
+        if beersList.count == Int() || page == Constants.kInitialPage {
+            beersList = [Beer]()
+        }
+        
+        
+        
+    }
 
 }
 

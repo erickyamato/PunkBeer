@@ -8,4 +8,5 @@ target 'PunkBeer' do
   # Pods for PunkBeer
   pod 'Alamofire'
   pod 'AlamofireImage'
+  pod 'lottie-ios'
 end
