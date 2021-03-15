@@ -10,6 +10,10 @@ import UIKit
 
 class BeerCell: UITableViewCell, NibReusable {
 
+    private enum Constants {
+        static let kAlcoholicStrength = "Alcoholic strength:"
+    }
+    
     //MARK: Outlets
     @IBOutlet weak var beerImageView: UIImageView!
     @IBOutlet weak var beerNameLabel: UILabel!
@@ -35,7 +39,7 @@ class BeerCell: UITableViewCell, NibReusable {
                beerName: String,
                alcoholicStrength: String) {
         beerNameLabel.text = beerName
-        alcoholicStrengthLabel.text = alcoholicStrength
+        alcoholicStrengthLabel.text = "\(Constants.kAlcoholicStrength) \(alcoholicStrength)"
         
     }
 }

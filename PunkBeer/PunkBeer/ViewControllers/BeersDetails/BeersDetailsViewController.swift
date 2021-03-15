@@ -17,6 +17,19 @@ class BeersDetailsViewController: UIViewController {
         static let kDescription       = "Desciption"
     }
     
+    var id: Int
+    var beer: Beer
+    
+    init(id: Int, beer: Beer) {
+        self.id = id
+        self.beer = beer
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //MARK: Outlets
     @IBOutlet weak var beerImageView: UIImageView!
     @IBOutlet weak var beerNameLabel: UILabel!
