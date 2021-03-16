@@ -11,10 +11,13 @@ import UIKit
 class BeersDetailsViewController: UIViewController {
 
     private enum Constants {
-        static let kName              = "Name:"
-        static let kAlcoholicStrength = "Alcoholic strength:"
-        static let kBitterness        = "Bitterness:"
-        static let kDescription       = "Desciption"
+        static let kName                       = "Name:"
+        static let kAlcoholicStrength          = "Alcoholic strength:"
+        static let kBitterness                 = "Bitterness:"
+        static let kDescription                = "Desciption"
+        static let kThirteenFontSize: CGFloat  = 13
+        static let kFourteenFontSize: CGFloat  = 14
+        static let kSevenTeenFontSize: CGFloat = 17
     }
     
     var id: Int
@@ -55,22 +58,22 @@ class BeersDetailsViewController: UIViewController {
     }
 
     private func applyStyle() {
-        beerNameLabel.font                   = .systemFont(ofSize: 17)
+        beerNameLabel.font                   = .systemFont(ofSize: Constants.kSevenTeenFontSize)
         beerNameLabel.textColor              = .black
         
-        beerTaglineLabel.font                = .systemFont(ofSize: 13)
+        beerTaglineLabel.font                = .systemFont(ofSize: Constants.kThirteenFontSize)
         beerTaglineLabel.textColor           = .lightGray
         
-        beerAlcoholicStrengthLabel.font      = .systemFont(ofSize: 17)
+        beerAlcoholicStrengthLabel.font      = .systemFont(ofSize: Constants.kSevenTeenFontSize)
         beerAlcoholicStrengthLabel.textColor = .black
         
-        beerBitternessLabel.font             = .systemFont(ofSize: 17)
+        beerBitternessLabel.font             = .systemFont(ofSize: Constants.kSevenTeenFontSize)
         beerBitternessLabel.textColor        = .black
         
-        beerDescriptionLabel.font            = .boldSystemFont(ofSize: 17)
+        beerDescriptionLabel.font            = .boldSystemFont(ofSize: Constants.kSevenTeenFontSize)
         beerDescriptionLabel.textColor       = .black
         
-        beerDescriptionTextView.font         = .systemFont(ofSize: 14)
+        beerDescriptionTextView.font         = .systemFont(ofSize: Constants.kFourteenFontSize)
         beerDescriptionTextView.textColor    = .black
     }
 
