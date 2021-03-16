@@ -23,14 +23,13 @@ class BeersListViewController: UIViewController {
     var activityIndicator = UIActivityIndicatorView(style: .large)
     
     //MARK: Outlets
-    @IBOutlet weak var beersLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = Constants.kTitle
         
+        applyLanguage()
         setupActivityIndicator()
         setupTableView()
         
@@ -42,14 +41,8 @@ class BeersListViewController: UIViewController {
     
     //MARK: Functions
     private func applyLanguage() {
-        beersLabel.text = Constants.kTitle
+        title = Constants.kTitle
     }
-    
-    private func applyStyle() {
-        beersLabel.font = .boldSystemFont(ofSize: Constants.kSevenTeenFontSize)
-        beersLabel.textColor = .black
-    }
-    
     private func setupActivityIndicator() {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         

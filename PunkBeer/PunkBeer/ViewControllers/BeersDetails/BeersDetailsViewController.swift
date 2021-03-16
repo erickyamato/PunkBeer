@@ -11,7 +11,6 @@ import UIKit
 class BeersDetailsViewController: UIViewController {
 
     private enum Constants {
-        static let kName                       = "Name:"
         static let kAlcoholicStrength          = "Alcoholic strength:"
         static let kBitterness                 = "Bitterness:"
         static let kDescription                = "Desciption"
@@ -24,7 +23,6 @@ class BeersDetailsViewController: UIViewController {
     
     //MARK: Outlets
     @IBOutlet weak var beerImageView: UIImageView!
-    @IBOutlet weak var beerNameLabel: UILabel!
     @IBOutlet weak var beerTaglineLabel: UILabel!
     @IBOutlet weak var beerAlcoholicStrengthLabel: UILabel!
     @IBOutlet weak var beerBitternessLabel: UILabel!
@@ -51,7 +49,6 @@ class BeersDetailsViewController: UIViewController {
     
     private func applyLanguage() {
         guard let beer = beer else {
-            beerNameLabel.text              = String()
             beerAlcoholicStrengthLabel.text = String()
             beerBitternessLabel.text        = String()
             beerDescriptionLabel.text       = String()
@@ -59,7 +56,9 @@ class BeersDetailsViewController: UIViewController {
             return
         }
         
-        beerNameLabel.text              = "\(Constants.kName) \(beer.name)"
+        title = beer.name
+        
+        beerTaglineLabel.text           = beer.tagline
         beerAlcoholicStrengthLabel.text = "\(Constants.kAlcoholicStrength) \(beer.alcoholicStrength)"
         beerBitternessLabel.text        = "\(Constants.kBitterness) \(beer.bitterness)"
         beerDescriptionLabel.text       = Constants.kDescription
@@ -67,23 +66,22 @@ class BeersDetailsViewController: UIViewController {
     }
 
     private func applyStyle() {
-        beerNameLabel.font                   = .systemFont(ofSize: Constants.kSevenTeenFontSize)
-        beerNameLabel.textColor              = .black
+        beerTaglineLabel.font                               = .systemFont(ofSize: Constants.kThirteenFontSize)
+        beerTaglineLabel.textColor                          = .lightGray
         
-        beerTaglineLabel.font                = .systemFont(ofSize: Constants.kThirteenFontSize)
-        beerTaglineLabel.textColor           = .lightGray
+        beerAlcoholicStrengthLabel.font                     = .systemFont(ofSize: Constants.kSevenTeenFontSize)
+        beerAlcoholicStrengthLabel.textColor                = .black
         
-        beerAlcoholicStrengthLabel.font      = .systemFont(ofSize: Constants.kSevenTeenFontSize)
-        beerAlcoholicStrengthLabel.textColor = .black
+        beerBitternessLabel.font                            = .systemFont(ofSize: Constants.kSevenTeenFontSize)
+        beerBitternessLabel.textColor                       = .black
         
-        beerBitternessLabel.font             = .systemFont(ofSize: Constants.kSevenTeenFontSize)
-        beerBitternessLabel.textColor        = .black
+        beerDescriptionLabel.font                           = .boldSystemFont(ofSize: Constants.kSevenTeenFontSize)
+        beerDescriptionLabel.textColor                      = .black
         
-        beerDescriptionLabel.font            = .boldSystemFont(ofSize: Constants.kSevenTeenFontSize)
-        beerDescriptionLabel.textColor       = .black
-        
-        beerDescriptionTextView.font         = .systemFont(ofSize: Constants.kFourteenFontSize)
-        beerDescriptionTextView.textColor    = .black
+        beerDescriptionTextView.allowsEditingTextAttributes = false
+        beerDescriptionTextView.font                        = .systemFont(ofSize: Constants.kFourteenFontSize)
+        beerDescriptionTextView.textColor                   = .black
+        beerDescriptionTextView.textAlignment               = .justified
     }
 
 }
