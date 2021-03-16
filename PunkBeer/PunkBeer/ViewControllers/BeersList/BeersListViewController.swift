@@ -35,7 +35,10 @@ class BeersListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
+        loadBeerList { [weak self] in
+          guard let strongSelf = self else { return }
+          strongSelf.tableView.reloadData()
+        }
     }
     
     //MARK: Functions
@@ -55,14 +58,32 @@ class BeersListViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
     
-    func loadBeerList(completion: @escaping CompletionBlock.Empty) {
+    private func loadBeerList(completion: @escaping CompletionBlock.Empty) {
         if beersList.count == Int() || page == Constants.kInitialPage {
             beersList = [Beer]()
         }
         
         activityIndicator.startAnimating()
         
-        
+        if Network.shared.isConnectedToInternet() {
+          Network.shared.fetchBeers(page: page) { [weak self] beers, _ in
+            
+            self?.activityIndicator.stopAnimating()
+            
+            guard let strongSelf = self else { completion(); return }
+            if let items = self?.beersList, items.count > Int() {
+              strongSelf.beersList.append(contentsOf: items)
+              if let noDuplicates = strongSelf.beersList.noDuplicates() {
+                strongSelf.beersList = noDuplicates
+              }
+                strongSelf.page += BeersListViewController.Constants.kPageIncrement
+                self?.tableView.reloadData()
+            }
+            completion()
+          }
+        } else {
+          completion()
+        }
         
     }
 
@@ -76,24 +97,12 @@ extension BeersListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: BeerCell = tableView.dequeueReusableCell(for: indexPath)
-        let item = beersList[indexPath.row]
-        let beerImageUrl = item.imageURL
-        cell.beerImageView.af.setImage(
-            withURL:  URL(string: beerImageUrl)!,
-            filter: nil,
-            imageTransition: UIImageView.ImageTransition.crossDissolve(0.5),
-            runImageTransitionIfCached: false) {
-                response in
-                    if response.response != nil {
-                        self.tableView.beginUpdates()
-                        self.tableView.endUpdates()
-                    }
-            }
-//        cell.setup(beerImage: item.imageURL ,
-//                   beerName: item.name,
-//                   alcoholicStrength: String(item.alcoholicStrength))
+        cell.beer = beersList[indexPath.row]
+        
         return cell
     }
+    
+    
 }
 
 // MARK: UITableViewDelegate
@@ -108,5 +117,12 @@ extension BeersListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let items = beersList
+        let lastIndex = items.count - 1
+        if indexPath.item == lastIndex {
+            self.loadBeerList {
+                self.tableView.reloadData()
+            }
+        }
     }
 }

@@ -20,13 +20,48 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BeerCell" id="hnf-c0-8qV">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hnf-c0-8qV" id="M2Q-Lr-zPH">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BeerCell" rowHeight="44" id="vPE-sj-iWJ" customClass="BeerCell" customModule="PunkBeer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vPE-sj-iWJ" id="IoN-mN-OYU">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X6P-NY-ksh">
+                                                    <rect key="frame" x="20" y="2" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="6Hz-Vp-0at"/>
+                                                        <constraint firstAttribute="width" constant="40" id="K3t-2h-9gL"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ram-Wn-GPI">
+                                                    <rect key="frame" x="80" y="2" width="54" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alcoholic strength:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acA-ir-wNe">
+                                                    <rect key="frame" x="80" y="21" width="142.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="X6P-NY-ksh" firstAttribute="centerY" secondItem="IoN-mN-OYU" secondAttribute="centerY" id="8pF-Ig-tma"/>
+                                                <constraint firstItem="Ram-Wn-GPI" firstAttribute="leading" secondItem="X6P-NY-ksh" secondAttribute="trailing" constant="20" id="KtR-dM-d5C"/>
+                                                <constraint firstItem="X6P-NY-ksh" firstAttribute="leading" secondItem="IoN-mN-OYU" secondAttribute="leading" constant="20" id="VBp-sJ-bqT"/>
+                                                <constraint firstItem="acA-ir-wNe" firstAttribute="bottom" secondItem="X6P-NY-ksh" secondAttribute="bottom" id="VYZ-6m-DzV"/>
+                                                <constraint firstItem="Ram-Wn-GPI" firstAttribute="top" secondItem="X6P-NY-ksh" secondAttribute="top" id="pRC-WD-bog"/>
+                                                <constraint firstItem="acA-ir-wNe" firstAttribute="leading" secondItem="Ram-Wn-GPI" secondAttribute="leading" id="pZF-Hd-32N"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <viewLayoutGuide key="safeArea" id="vvf-PH-xsU"/>
+                                        <connections>
+                                            <outlet property="alcoholicStrengthLabel" destination="acA-ir-wNe" id="lar-hz-WgC"/>
+                                            <outlet property="beerImageView" destination="X6P-NY-ksh" id="v0D-mb-Po4"/>
+                                            <outlet property="beerNameLabel" destination="Ram-Wn-GPI" id="ud3-ix-688"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

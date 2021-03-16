@@ -19,6 +19,16 @@ class BeerCell: UITableViewCell, NibReusable {
     @IBOutlet weak var beerNameLabel: UILabel!
     @IBOutlet weak var alcoholicStrengthLabel: UILabel!
     
+    var beer: Beer? {
+        didSet {
+            guard let beer = beer else { return }
+            
+            beerImageView.af.setImage(withURL: URL(string: beer.imageURL)!)
+            beerNameLabel.text = beer.name
+            alcoholicStrengthLabel.text = "\(Constants.kAlcoholicStrength) \(beer.alcoholicStrength)"
+            
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,11 +45,12 @@ class BeerCell: UITableViewCell, NibReusable {
         beerImageView.layer.cornerRadius = beerImageView.frame.height/2
     }
     
-    func setup(beerImage: UIImageView,
-               beerName: String,
-               alcoholicStrength: String) {
-        beerNameLabel.text = beerName
-        alcoholicStrengthLabel.text = "\(Constants.kAlcoholicStrength) \(alcoholicStrength)"
-        
-    }
+//    func setup(beerImage: UIImageView,
+//               beerName: String,
+//               alcoholicStrength: String) {
+//        beerImageView.af.setImage(withURL: URL(string: beer!.imageURL)!)
+//        beerNameLabel.text = beerName
+//        alcoholicStrengthLabel.text = "\(Constants.kAlcoholicStrength) \(alcoholicStrength)"
+//
+//    }
 }
