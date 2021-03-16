@@ -30,10 +30,6 @@ class BeersListViewController: UIViewController {
         
         setupActivityIndicator()
         setupTableView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         loadBeerList { [weak self] in
           guard let strongSelf = self else { return }
@@ -51,14 +47,13 @@ class BeersListViewController: UIViewController {
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     private func setupTableView() {
-        tableView.rowHeight = UITableView.automaticDimension
         tableView.register(cellType: BeerCell.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
     }
     
-    private func loadBeerList(completion: @escaping CompletionBlock.Empty) {
+    func loadBeerList(completion: @escaping CompletionBlock.Empty) {
         if beersList.count == Int() || page == Constants.kInitialPage {
             beersList = [Beer]()
         }
@@ -71,6 +66,7 @@ class BeersListViewController: UIViewController {
             self?.activityIndicator.stopAnimating()
             
             guard let strongSelf = self else { completion(); return }
+            
             if let items = self?.beersList, items.count > Int() {
               strongSelf.beersList.append(contentsOf: items)
               if let noDuplicates = strongSelf.beersList.noDuplicates() {
