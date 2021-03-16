@@ -109,11 +109,11 @@ extension BeersListViewController: UITableViewDataSource {
 extension BeersListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let _: BeerCell = tableView.dequeueReusableCell(for: indexPath)
-        let item = beersList[indexPath.row]
-       
+        guard let beersDetailsViewController = StoryboardReusable.beersDetailsViewController() else { return }
         
+        beersDetailsViewController.beer = beersList[indexPath.row]
         
+        self.navigationController?.pushViewController(beersDetailsViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

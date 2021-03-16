@@ -19,9 +19,9 @@
 		2DA50F2E25FA508300F33FCF /* BeerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA50F2C25FA508300F33FCF /* BeerCell.swift */; };
 		2DA50F2F25FA508300F33FCF /* BeerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA50F2D25FA508300F33FCF /* BeerCell.xib */; };
 		2DA50F3525FA581500F33FCF /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA50F3425FA581500F33FCF /* Beer.swift */; };
-		2DA50F4025FA600C00F33FCF /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA50F3F25FA600C00F33FCF /* UIViewController+Alert.swift */; };
 		2DA50F4325FA617F00F33FCF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA50F4225FA617F00F33FCF /* Network.swift */; };
 		2DA50F4625FA61CE00F33FCF /* TypeAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA50F4525FA61CE00F33FCF /* TypeAlias.swift */; };
+		2DC039E82600DF3B000443B9 /* StoryboardReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC039E72600DF3B000443B9 /* StoryboardReusable.swift */; };
 		FCD34517E0552217F0D88C9D /* Pods_PunkBeer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A03DA09C80C8D3B208A47C5 /* Pods_PunkBeer.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,9 +40,9 @@
 		2DA50F2C25FA508300F33FCF /* BeerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCell.swift; sourceTree = "<group>"; };
 		2DA50F2D25FA508300F33FCF /* BeerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerCell.xib; sourceTree = "<group>"; };
 		2DA50F3425FA581500F33FCF /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
-		2DA50F3F25FA600C00F33FCF /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		2DA50F4225FA617F00F33FCF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		2DA50F4525FA61CE00F33FCF /* TypeAlias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAlias.swift; sourceTree = "<group>"; };
+		2DC039E72600DF3B000443B9 /* StoryboardReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardReusable.swift; sourceTree = "<group>"; };
 		7A03DA09C80C8D3B208A47C5 /* Pods_PunkBeer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PunkBeer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D00FBFBC022B952F0CB2B4 /* Pods-PunkBeer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PunkBeer.release.xcconfig"; path = "Target Support Files/Pods-PunkBeer/Pods-PunkBeer.release.xcconfig"; sourceTree = "<group>"; };
 		D9A237B987D560222E1B1ECF /* Pods-PunkBeer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PunkBeer.debug.xcconfig"; path = "Target Support Files/Pods-PunkBeer/Pods-PunkBeer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +113,7 @@
 			children = (
 				2D8CE9E725F9C0A200F570BD /* NibReusable.swift */,
 				2DA50F4525FA61CE00F33FCF /* TypeAlias.swift */,
+				2DC039E72600DF3B000443B9 /* StoryboardReusable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -151,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				2DA50F1F25FA47A100F33FCF /* UIViewController+BackButton.swift */,
-				2DA50F3F25FA600C00F33FCF /* UIViewController+Alert.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -317,10 +317,10 @@
 				2DA50F4325FA617F00F33FCF /* Network.swift in Sources */,
 				2DA50F4625FA61CE00F33FCF /* TypeAlias.swift in Sources */,
 				2D8CE9E825F9C0A200F570BD /* NibReusable.swift in Sources */,
-				2DA50F4025FA600C00F33FCF /* UIViewController+Alert.swift in Sources */,
 				2DA50F2025FA47A100F33FCF /* UIViewController+BackButton.swift in Sources */,
 				2D8CE9BE25F9B9F100F570BD /* AppDelegate.swift in Sources */,
 				2D944C4C25FF8F9000252F94 /* BeersDetailsViewController.swift in Sources */,
+				2DC039E82600DF3B000443B9 /* StoryboardReusable.swift in Sources */,
 				2DA50F2825FA4DB300F33FCF /* BeersListViewController.swift in Sources */,
 				2DA50F2E25FA508300F33FCF /* BeerCell.swift in Sources */,
 				2DA50F3525FA581500F33FCF /* Beer.swift in Sources */,
