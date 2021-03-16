@@ -20,18 +20,7 @@ class BeersDetailsViewController: UIViewController {
         static let kSevenTeenFontSize: CGFloat = 17
     }
     
-    var id: Int
-    var beer: Beer
-    
-    init(id: Int, beer: Beer) {
-        self.id = id
-        self.beer = beer
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var beer: Beer?
     
     //MARK: Outlets
     @IBOutlet weak var beerImageView: UIImageView!
@@ -46,15 +35,35 @@ class BeersDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        applyImage()
         applyLanguage()
         applyStyle()
     }
     
+    private func applyImage() {
+        guard let beer = beer else {
+            beerImageView.image = nil
+            return
+        }
+        
+        beerImageView.af.setImage(withURL: URL(string: beer.imageURL)!)
+    }
+    
     private func applyLanguage() {
-        beerNameLabel.text              = "\(Constants.kName)"
-        beerAlcoholicStrengthLabel.text = "\(Constants.kAlcoholicStrength)"
-        beerBitternessLabel.text        = "\(Constants.kBitterness)"
+        guard let beer = beer else {
+            beerNameLabel.text              = String()
+            beerAlcoholicStrengthLabel.text = String()
+            beerBitternessLabel.text        = String()
+            beerDescriptionLabel.text       = String()
+            beerDescriptionTextView.text    = String()
+            return
+        }
+        
+        beerNameLabel.text              = "\(Constants.kName) \(beer.name)"
+        beerAlcoholicStrengthLabel.text = "\(Constants.kAlcoholicStrength) \(beer.alcoholicStrength)"
+        beerBitternessLabel.text        = "\(Constants.kBitterness) \(beer.bitterness)"
         beerDescriptionLabel.text       = Constants.kDescription
+        beerDescriptionTextView.text    = beer.description
     }
 
     private func applyStyle() {
