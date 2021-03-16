@@ -12,8 +12,10 @@ import AlamofireImage
 class BeersListViewController: UIViewController {
 
     private enum Constants {
-        static let kPageIncrement = 1
-        static let kInitialPage   = 1
+        static let kTitle                      = "Beers"
+        static let kPageIncrement              = 1
+        static let kInitialPage                = 1
+        static let kSevenTeenFontSize: CGFloat = 17
     }
     
     private var page = 1
@@ -21,12 +23,13 @@ class BeersListViewController: UIViewController {
     var activityIndicator = UIActivityIndicatorView(style: .large)
     
     //MARK: Outlets
+    @IBOutlet weak var beersLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
     
     //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = Constants.kTitle
         
         setupActivityIndicator()
         setupTableView()
@@ -38,6 +41,15 @@ class BeersListViewController: UIViewController {
     }
     
     //MARK: Functions
+    private func applyLanguage() {
+        beersLabel.text = Constants.kTitle
+    }
+    
+    private func applyStyle() {
+        beersLabel.font = .boldSystemFont(ofSize: Constants.kSevenTeenFontSize)
+        beersLabel.textColor = .black
+    }
+    
     private func setupActivityIndicator() {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
@@ -67,7 +79,7 @@ class BeersListViewController: UIViewController {
             
             guard let strongSelf = self else { completion(); return }
             
-            if let items = self?.beersList, items.count > Int() {
+            if let items = beers, items.count > Int() {
               strongSelf.beersList.append(contentsOf: items)
               if let noDuplicates = strongSelf.beersList.noDuplicates() {
                 strongSelf.beersList = noDuplicates
